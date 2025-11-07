@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informaciones</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 id="encabezado">Informaciones</h1>
+                <nav class="links">
+                    <ul>
+                        <li><a href="pages/pokemon.html">Pokémon</a></li>
+                        <li><a href="pages/star-wars.html">Star Wars</a></li>
+                        <li><a href="pages/recetas.html">Recetas</a></li>
+                        <li><a href="pages/gatos.html">Gatos</a></li>
+                    </ul>
+                </nav>
+                
+                <!--Menú móvil (dropdown) -->
+                <div class="mobile-menu">
+                    <button id="dropdown-btn">Menú ▼</button>
+                        <ul id="dropdown-menu" class="dropdown">
+                        <li><a href="pages/pokemon.html">Pokémon</a></li>
+                        <li><a href="pages/star-wars.html">Star Wars</a></li>
+                        <li><a href="pages/recetas.html">Recetas</a></li>
+                        <li><a href="pages/gatos.html">Gatos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Destacados del día</h2>
+            
+            <div class="cards-container">
+                <!-- Pokémon del día -->
+                <article id="pokemon-del-dia" class="card">
+                    <div class="card-content">
+                        <h3>Pokémon del día</h3>
+                        <figure>
+                            <img id="poke-imgen"
+                                 src="https://placehold.co/160x160/e2e8f0/94a3b8?text=Pokemon"
+                                 alt="Imagen del Pokémon del día"
+                                 width="160" height="160"
+                                 loading="lazy">
+                            <figcaption id="poke-nombre">Cargando...</figcaption>
+                        </figure>
+                        <ul id="poke-carasteristicas">
+                            <li id="poke-carasteristica-1">Tipo: Cargando...</li>
+                            <li id="poke-carasteristica-2">Habilidad: Cargando...</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Receta del día -->
+                <article id="receta-del-dia" class="card">
+                    <div class="card-content">
+                        <h3>Receta del día</h3>
+                        <figure>
+                            <img id="receta-imgen"
+                                 src="https://placehold.co/160x160/fef3c7/d97706?text=Receta"
+                                 alt="Imagen de la Receta"
+                                 width="160" height="160"
+                                 loading="lazy">
+                            <figcaption id="receta-nombre">Cargando...</figcaption>
+                        </figure>
+                        <ul id="receta-carasteristicas">
+                            <li id="reeceta-carasteristica-1">Categoría: Cargando...</li>
+                            <li id="reeceta-carasteristica-2">Dificultad: Cargando...</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Star Wars del día -->
+                <article id="star-wars-del-dia" class="card">
+                    <div class="card-content">
+                        <h3>Personaje de Star Wars del día</h3>
+                        <figure>
+                            <img id="star-wars-imgen"
+                                 src="assets/images/default_starwars_profile_picture.jpg"
+                                 alt="Imagen del Personaje de Star Wars del día"
+                                 width="160" height="160"
+                                 loading="lazy">
+                            <figcaption id="star-wars-nombre">Cargando...</figcaption>
+                        </figure>
+                        <ul id="star-wars-carasteristicas">
+                            <li id="star-wars-carasteristica-1">Especie: Cargando...</li>
+                            <li id="star-wars-carasteristica-2">Planeta: Cargando...</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Gatos del día -->
+                <article id="Gatos-del-Dia" class="card">
+                    <div class="card-content">
+                        <h3>Gato del día</h3>
+                        <figure>
+                            <img id="gato-imgen"
+                                 src="https://placehold.co/160x160/f3e8ff/c084fc?text=Gato"
+                                 alt="Imagen del Gato del Día"
+                                 width="160" height="160"
+                                 loading="lazy">
+                            <figcaption id="gato-nombre">Cargando...</figcaption>
+                        </figure>
+                        <ul id="gato-carasteristicas">
+                            <li id="gato-carasteristica-1">Raza: Cargando...</li>
+                            <li id="gato-carasteristica-2">Origen: Cargando...</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p id="pie-de-pagina">© 2025 Informaciones | Web Móvil</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>
