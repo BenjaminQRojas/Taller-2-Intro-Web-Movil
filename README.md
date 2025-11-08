@@ -71,4 +71,13 @@ Se deber´a entregar:
         Nombre, apellido y RUT de cada integrante.
         Tecnolog´ıas y bases de datos utilizadas.
         El archivo APK final generado mediante Cordova.
+        
+## Roles por Integrante
+
+Nicolás FastAPI(TheCatAPI) + PostgresQL
+Vicente NestJs(SWAPI) + PostgresQL
+Benja Express(TheMealDBAPI)+ PostgresQL
+Mauri Express(PokeAPI) + PostgresQL
+
+
 
