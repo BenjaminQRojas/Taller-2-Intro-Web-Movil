@@ -20,23 +20,21 @@ async function renderTenMeals() {
         const cardIndex = index + 1;
         
         if (meal) {
-            document.getElementById(`receta-imgen-${cardIndex}`).src = meal.image;
-            document.getElementById(`receta-imgen-${cardIndex}`).alt = `Imagen de ${meal.name}`;
-            document.getElementById(`receta-nombre-${cardIndex}`).textContent = meal.name;
+            document.getElementById(`receta-imgen-${cardIndex}`).src = meal.strMealThumb;
+            document.getElementById(`receta-imgen-${cardIndex}`).alt = `Imagen de ${meal.strMeal}`;
+            document.getElementById(`receta-nombre-${cardIndex}`).textContent = meal.strMeal;
 
             const characteristicsList = document.getElementById(`receta-carasteristicas-${cardIndex}`);
             characteristicsList.innerHTML = '';
 
             const categoryLi = document.createElement('li');
-            categoryLi.textContent = `Categoría: ${meal.category}`;
+            categoryLi.textContent = `Categoría: ${meal.strCategory}`;
             characteristicsList.appendChild(categoryLi);
 
             const instructionsLi = document.createElement('li');
-            instructionsLi.textContent = `Instrucciones: ${truncateText(meal.instructions, 70)}`;
+            instructionsLi.textContent = `Instrucciones: ${truncateText(meal.strInstructions, 70)}`;
             characteristicsList.appendChild(instructionsLi);
-            
 
-            //Tarjeta receta
             const recetaCard = document.getElementById(`receta-${cardIndex}`);
             if (recetaCard) {
                 recetaCard.replaceWith(recetaCard.cloneNode(true));
@@ -44,8 +42,7 @@ async function renderTenMeals() {
                 
                 newCard.style.cursor = 'pointer';
                 newCard.addEventListener('click', () => {
-                    localStorage.setItem("selectedReceta", JSON.stringify(meal));
-                    window.location.href = "recetadetalle.html";
+                    window.location.href = `recetadetalle.html?id=${meal.idMeal}`;
                 });
             }
         } else {
@@ -61,11 +58,3 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshButton.addEventListener('click', renderTenMeals);
     renderTenMeals();
 });
-
-/*
-const dropdownBtn = document.getElementById('dropdown-btn');
-const dropdownMenu = document.getElementById('dropdown-menu');
-
-dropdownBtn.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('dropdown-open');
-});*/
