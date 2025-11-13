@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger": "node swagger.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +19,9 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "pg": "^8.16.3",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

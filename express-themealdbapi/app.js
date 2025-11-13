@@ -4,7 +4,9 @@ const path = require('path');
 const frontendRoot = path.join(__dirname, '..');
 const sequelize = require('./database.js');
 const mealRoutes = require('./themealdbapiRoutes.js');
-const Meal = require('./meal.model.js'); 
+const Meal = require('./meal.model.js');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.use(express.json());
 app.use('/api/meals', mealRoutes);
 
 app.use(express.static(frontendRoot));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 sequelize.sync({ alter: true })
   .then(() => console.log('sinconizacion de la db exitosa'))
