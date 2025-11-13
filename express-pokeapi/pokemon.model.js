@@ -16,6 +16,16 @@ const Pokemon = sequelize.define('Pokemon', {
   image: {
     type: DataTypes.STRING,
   },
+    types: {
+    type: DataTypes.ARRAY(DataTypes.STRING), // arreglo de strings
+  },
+  abilities: {
+    type: DataTypes.ARRAY(DataTypes.STRING), // arreglo de strings
+  },
+  height: {
+    type: DataTypes.INTEGER, 
+  },
 });
+
 
 export default Pokemon;

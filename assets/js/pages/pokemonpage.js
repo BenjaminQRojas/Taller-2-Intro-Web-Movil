@@ -1,6 +1,7 @@
 import { getPokemon } from '../api/pokeapi.js';
 import { capitalizeFirstLetter } from '../api/utils.js';
 
+
 // Función principal para renderizar los 10 Pokémon
 async function renderTenPokemon() {
     
