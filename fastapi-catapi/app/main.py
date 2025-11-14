@@ -1,5 +1,6 @@
 # app/main.py
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware  # ← NUEVO
 from typing import List
 from sqlalchemy.orm import Session
 from . import crud, models, schemas, database
@@ -8,6 +9,16 @@ from . import crud, models, schemas, database
 models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(title="API Gatos - InfoMóvil")
+
+# === AÑADE CORS AQUÍ ===
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todos los orígenes (para desarrollo)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# =======================
 
 def get_db():
     db = database.SessionLocal()

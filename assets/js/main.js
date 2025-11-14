@@ -116,44 +116,55 @@ async function renderStarWarsCharacter() {
     }
 }
 
-async function renderCatImage() {
-    try {
-        const cat = await getRandomCatImage();
+let allCats = [];
 
-    if (cat) {
-        document.getElementById('gato-imgen').src = cat.url;
-        document.getElementById('gato-imgen').alt = `Imagen de un gato con ID ${cat.id}`;
-        document.getElementById('gato-nombre').textContent = `ID: ${cat.id}`;
-        
-        const characteristicsList = document.getElementById('gato-carasteristicas');
-        characteristicsList.innerHTML = '';
-        
-        const listItem1 = document.createElement('li');
-        listItem1.textContent = "Un adorable compañero.";
+async function cargarGatoDelDia() {
+  const card = document.getElementById('Gatos-del-Dia');
+  const img = document.getElementById('gato-imgen');
+  const nombre = document.getElementById('gato-nombre');
+  const raza = document.getElementById('gato-carasteristica-1');
+  const origen = document.getElementById('gato-carasteristica-2');
 
-        const listItem2 = document.createElement('li');
-        listItem2.textContent = `Raza: ${cat.breed}`;
-        
-        characteristicsList.appendChild(listItem2);
-        characteristicsList.appendChild(listItem1);
-
-         //guardar gato en localstorage
-        localStorage.setItem("selectedCat", JSON.stringify(cat));
-
-        //hacer click en la tarjeta
-        const catCard = document.getElementById("Gatos-del-Dia");
-        catCard.addEventListener("click", () => {
-            window.location.href = "pages/gatosdetalle.html";
-        });
-
-        } else {
-            document.getElementById('Gatos-del-Dia').innerHTML = '<p>No se pudo cargar la imagen del gato.</p>';
-        }
-    } catch (error) {
-        console.error('Error cargando gato:', error);
-        document.getElementById('Gatos-del-Dia').innerHTML = '<p>Error al cargar el gato.</p>';
+  try {
+    if (allCats.length === 0) {
+      const response = await fetch('http://localhost:8000/cats');
+      if (!response.ok) throw new Error('Error al cargar gatos');
+      allCats = await response.json();
     }
+
+    const gato = allCats[Math.floor(Math.random() * allCats.length)];
+
+    // Actualizar
+    img.src = gato.image_url;
+    img.alt = gato.breed_name || 'Gato';
+    nombre.textContent = gato.breed_name || 'Sin raza';
+    raza.textContent = `Raza: ${gato.breed_name || 'Desconocida'}`;
+    origen.textContent = `Origen: ${gato.origin || 'Desconocido'}`;
+
+    // Hacer cliqueable
+    card.style.cursor = 'pointer';
+    card.onclick = () => {
+      localStorage.setItem('gatoSeleccionadoId', gato.id);
+      window.location.href = 'pages/gatosdetalle.html';
+    };
+    card.tabIndex = 0;
+    card.onkeydown = (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        localStorage.setItem('gatoSeleccionadoId', gato.id);
+        window.location.href = 'pages/gatosdetalle.html';
+      }
+    };
+
+  } catch (error) {
+    console.error('Error:', error);
+    nombre.textContent = 'Error';
+    raza.textContent = 'Raza: -';
+    origen.textContent = 'Origen: -';
+  }
 }
+
+document.addEventListener('DOMContentLoaded', cargarGatoDelDia);
 
 
 document.addEventListener('DOMContentLoaded', () => {
