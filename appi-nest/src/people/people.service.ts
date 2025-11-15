@@ -11,28 +11,33 @@ export class PeopleService {
     private readonly peopleRepo: Repository<Person>,
   ) {}
 
-  private async pagedGet(path: string) {
-    let url = `https://swapi.dev/api/${path}`;
-    const all: any[] = [];
-    while (url) {
-      const { data } = await axios.get(url);
-      all.push(...(data?.results ?? []));
-      url = data?.next;
-    }
-    return all;
-  }
-
-  private extractSwapiId(url: string): number | null {
-    const m = url.match(/\/people\/(\d+)\//);
-    return m ? Number(m[1]) : null;
-  }
-
   async syncFromSwapi() {
-    const people = await this.pagedGet('people/');
-    for (const p of people) {
-      const swapiId = this.extractSwapiId(p.url) ?? undefined;
+  type SwapiPerson = {
+    url: string;
+    name: string;
+    birth_year: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+  };
 
-      const entity = this.peopleRepo.create({
+  let url = 'https://swapi.dev/api/people/';
+  const allPeople: SwapiPerson[] = [];
+
+  while (url) {
+    const { data } = await axios.get(url);
+    allPeople.push(...(data.results as SwapiPerson[]));
+    url = data.next;
+  }
+
+  for (const p of allPeople) {
+    const idMatch = p.url.match(/\/people\/(\d+)\//);
+    const swapiId = idMatch ? Number(idMatch[1]) : undefined;
+
+    await this.peopleRepo.upsert(
+      {
         swapiId,
         name: p.name,
         birth_year: p.birth_year,
@@ -41,16 +46,13 @@ export class PeopleService {
         hair_color: p.hair_color,
         skin_color: p.skin_color,
         eye_color: p.eye_color,
-      });
-
-      if (swapiId !== undefined) {
-        await this.peopleRepo.upsert(entity, ['swapiId']);
-      } else {
-        await this.peopleRepo.save(entity);
-      }
-    }
-    return { ok: true, imported: people.length };
+      },
+      ['swapiId'],
+    );
   }
+
+  return { ok: true, imported: allPeople.length };
+}
 
   findAllLite() {
     return this.peopleRepo.find({
