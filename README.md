@@ -85,6 +85,7 @@ cd appi-nest
 npm install
 
 2. Crear archivo .env en la raíz del proyecto
+
 DB_HOST=localhost
 
 DB_PORT=5432
