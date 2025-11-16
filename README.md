@@ -50,14 +50,14 @@ Empaquetar la aplicaci´on en formato APK Android utilizando Apache Cordova.
 
 El APK debe ejecutarse correctamente en un dispositivo m´ovil real o emulado.
 
-## 3. Dise˜no y Usabilidad
+## 3. Diseño y Usabilidad
 
 Mantener coherencia visual
 Implementar dise˜no Mobile First con Tailwind CSS
 
 Mostrar estados de carga y mensajes de error
 
-## 4. Entrega y Organizaci´on
+## 4. Entrega y Organización
 
 El proyecto debe desarrollarse en equipos de 4 integrantes.
 Se deber´a entregar:
@@ -104,3 +104,34 @@ Ajusta los valores según tu entorno local.
 3. Iniciar el backend
 
 npm run start
+
+## API de Gatos - TheCatAPI (FastAPI + PostgreSQL)
+  
+**Tecnologías:** Python, FastAPI, PostgreSQL, TheCatAPI (con API Key)
+
+---
+
+### Requisitos previos
+
+- Python 3.11+
+- PostgreSQL (local o Docker)
+- `pip`, `uvicorn`, `psql`
+
+---
+
+### 1. Configurar variables de entorno
+- fastapi-thecatapi/env
+DATABASE_URL=postgresql://postgres:password@localhost:5432/infomovil
+THECATAPI_KEY=live_tu_api_key_aqui
+
+### 2. Instalar dependencias
+cd fastapi-thecatapi
+pip install -r requirements.txt
+
+### 3. Base de datos
+psql -U postgres -> CREATE DATABASE infomovil;
+
+### 4. Ejecutar seed y levantar API
+python seed/seed_cats.py -> uvicorn app.main:app --reload --port 8000
+
+ 
