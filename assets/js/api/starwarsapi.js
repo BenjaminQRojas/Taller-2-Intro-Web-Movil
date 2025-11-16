@@ -1,7 +1,7 @@
 import { fetchData } from './fetch.js';
 
 export async function getStarWarsCharacter(id) {
-    const url = `https://swapi.dev/api/people/${id}/`;
+    const url = `http://localhost:3000/people/${id}`;
     const characterData = await fetchData(url);
 
     if (characterData) {
