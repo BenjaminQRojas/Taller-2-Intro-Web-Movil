@@ -81,10 +81,12 @@ Mauri Express(PokeAPI) + PostgresQL
 
 API NESTJS
 1. Entrar al proyecto e instalar dependencias
+
 cd appi-nest
+
 npm install
 
-2. Crear archivo .env en la raíz del proyecto
+4. Crear archivo .env en la raíz del proyecto
 
 DB_HOST=localhost
 
