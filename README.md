@@ -102,4 +102,5 @@ DB_NAME=swapi
 Ajusta los valores según tu entorno local.
 
 3. Iniciar el backend
+
 npm run start
