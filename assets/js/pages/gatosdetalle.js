@@ -1,27 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const catData = localStorage.getItem("selectedCat");
+// assets/js/pages/gatosdetalle.js
 
-  if (!catData) {
-    document.querySelector("main").innerHTML = "<p>No se encontró información del gato.</p>";
+async function cargarDetalleGato() {
+  const gatoId = localStorage.getItem('gatoSeleccionadoId');
+  if (!gatoId) {
+    document.body.innerHTML = '<p>No se seleccionó ningún gato.</p>';
     return;
   }
 
-  const cat = JSON.parse(catData);
+  const img = document.getElementById('detalle-gato-img');
+  const nombre = document.getElementById('detalle-gato-nombre');
+  const lista = document.getElementById('detalle-gato-caracteristicas');
 
-  // Renderizar en la página de detalle
-  document.getElementById("detalle-gato-img").src = cat.url;
-  document.getElementById("detalle-gato-img").alt = `Imagen del gato con ID ${cat.id}`;
-  document.getElementById("detalle-gato-nombre").textContent = `ID: ${cat.id}`;
+  try {
+    const response = await fetch(`http://localhost:8000/cats/${gatoId}`);
+    if (!response.ok) throw new Error('Gato no encontrado');
 
-  const list = document.getElementById("detalle-gato-caracteristicas");
-  list.innerHTML = "";
+    const gato = await response.json();
 
-  const li1 = document.createElement("li");
-  li1.textContent = `Raza: ${cat.breed || "Desconocida"}`;
+    img.src = gato.image_url;
+    img.alt = gato.breed_name || 'Gato';
+    nombre.textContent = gato.breed_name || 'Gato sin raza';
 
-  const li2 = document.createElement("li");
-  li2.textContent = "Un adorable compañero.";
+    lista.innerHTML = `
+      <li><strong>Raza:</strong> ${gato.breed_name || 'Desconocida'}</li>
+      <li><strong>Origen:</strong> ${gato.origin || 'Desconocido'}</li>
+      <li><strong>Temperamento:</strong> ${gato.temperament || 'No disponible'}</li>
+    `;
+  } catch (error) {
+    console.error('Error:', error);
+    nombre.textContent = 'Error al cargar detalle';
+    lista.innerHTML = '<li>No se pudo cargar la información</li>';
+  }
+}
 
-  list.appendChild(li1);
-  list.appendChild(li2);
-});
+document.addEventListener('DOMContentLoaded', cargarDetalleGato);
