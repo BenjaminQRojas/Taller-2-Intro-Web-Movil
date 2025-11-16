@@ -134,4 +134,18 @@ psql -U postgres -> CREATE DATABASE infomovil;
 ### 4. Ejecutar seed y levantar API
 python seed/seed_cats.py -> uvicorn app.main:app --reload --port 8000
 
+---
+## TheMealDB API 
+
+-> editar archivo .env
+> PGUSER=postgres <- usuario de la base de datos
+> PGHOST=localhost
+> PGDATABASE=themealdb <- nombre de la base de datos
+> PGPASSWORD=admin <- contraseña de la base de datos
+> PGPORT=5432
+> MEALDB_BASE_URL=https://www.themealdb.com/api/json/v1/1/
+
+-> cd express-themealdbapi
+-> npm install
+-> npm run dev
  
