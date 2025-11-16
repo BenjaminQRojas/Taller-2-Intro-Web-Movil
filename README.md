@@ -80,4 +80,17 @@ Benja Express(TheMealDBAPI)+ PostgresQL
 Mauri Express(PokeAPI) + PostgresQL
 
 
+Inicializacion de Backend NestJS
 
+cd appi-nest
+npm install
+
+Crear un archivo .env en la raíz del proyecto con algo similar a:
+
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASS=tu_password
+DB_NAME=swapi
+
+npm run start
