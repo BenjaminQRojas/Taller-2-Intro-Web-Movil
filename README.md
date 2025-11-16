@@ -79,18 +79,20 @@ Vicente NestJs(SWAPI) + PostgresQL
 Benja Express(TheMealDBAPI)+ PostgresQL
 Mauri Express(PokeAPI) + PostgresQL
 
-
-Inicializacion de Backend NestJS
-
+API NESTJS
+1. Entrar al proyecto e instalar dependencias
 cd appi-nest
 npm install
 
-Crear un archivo .env en la raíz del proyecto con algo similar a:
-
+2. Crear archivo .env en la raíz del proyecto
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASS=tu_password
 DB_NAME=swapi
 
+
+Ajusta los valores según tu entorno local.
+
+3. Iniciar el backend
 npm run start
