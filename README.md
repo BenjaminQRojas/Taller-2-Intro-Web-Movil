@@ -79,6 +79,8 @@ Vicente NestJs(SWAPI) + PostgresQL
 Benja Express(TheMealDBAPI)+ PostgresQL
 Mauri Express(PokeAPI) + PostgresQL
 
+## Instrucciones de ejecución
+
 API NESTJS
 1. Entrar al proyecto e instalar dependencias
 
@@ -145,7 +147,34 @@ python seed/seed_cats.py -> uvicorn app.main:app --reload --port 8000
 > PGPORT=5432
 > MEALDB_BASE_URL=https://www.themealdb.com/api/json/v1/1/
 
+
 -> cd express-themealdbapi
 -> npm install
 -> npm run dev
  
+# PokeAPI Express + PostgreSQL
+
+## Requisitos previos
+
+* Node.js
+* PostgreSQL
+
+## Pasos
+
+1. **Configurar variables de entorno (archivo .env)**
+
+```
+DB_USER=postgres        <- reemplazar con tu nombre de usuario 
+DB_PASSWORD=postgres    <- contraseña de postgresql
+```
+2. **Instalar dependencias** \
+Abrir una terminal en la raíz del proyecto, luego ingresar:
+```
+cd express-pokeapi
+npm i
+```
+3. **Ejecutar** \
+Ingresar en terminal
+```
+npm run dev
+```
