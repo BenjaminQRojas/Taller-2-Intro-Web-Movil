@@ -17,7 +17,7 @@ export async function ensureDatabaseExists() {
 
   const dbName = process.env.DB_NAME;
 
-  // Verificar si existe la base
+  
   const res = await client.query(
     `SELECT 1 FROM pg_database WHERE datname = $1`,
     [dbName]
@@ -28,7 +28,7 @@ export async function ensureDatabaseExists() {
     await client.query(`CREATE DATABASE "${dbName}"`);
     console.log(`Base de datos "${dbName}" creada correctamente.`);
   } else {
-    console.log(`✔ Base de datos "${dbName}" ya existe.`);
+    console.log(`Base de datos "${dbName}" ya existe.`);
   }
 
   await client.end();

@@ -4,7 +4,7 @@ import { ensureDatabaseExists } from './initDatabase.js';
 
 dotenv.config();
 
-await ensureDatabaseExists(); // ⬅️ CREA LA DB SI NO EXISTE
+await ensureDatabaseExists();
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
