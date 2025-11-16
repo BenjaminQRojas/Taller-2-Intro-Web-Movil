@@ -47,32 +47,32 @@ async function renderMeal() {
         const meal = await getRandomMeal();
         
         if (meal) {
-        document.getElementById('receta-imgen').src = meal.image;
-        document.getElementById('receta-imgen').alt = `Imagen de la receta de ${meal.name}`;
-        document.getElementById('receta-nombre').textContent = meal.name;
-        
-        const characteristicsList = document.getElementById('receta-carasteristicas');
-        characteristicsList.innerHTML = '';
-        
-        const listItem1 = document.createElement('li');
-        listItem1.textContent = `Categoría: ${meal.category}`;
-        characteristicsList.appendChild(listItem1);
+            document.getElementById('receta-imgen').src = meal.strMealThumb; 
+            document.getElementById('receta-imgen').alt = `Imagen de la receta de ${meal.strMeal}`; 
+            document.getElementById('receta-nombre').textContent = meal.strMeal;
+            
+            const characteristicsList = document.getElementById('receta-carasteristicas');
+            characteristicsList.innerHTML = '';
+            
+            const listItem1 = document.createElement('li');
+            listItem1.textContent = `Categoría: ${meal.strCategory}`;
+            characteristicsList.appendChild(listItem1);
 
-        const listItem2 = document.createElement('li');
-        const instructions = meal.instructions && meal.instructions.length > 50 
-            ? meal.instructions.substring(0, 50) + '...' 
-            : meal.instructions || 'Sin instrucciones';
-        listItem2.textContent = `Instrucciones: ${instructions}`;
-        characteristicsList.appendChild(listItem2);
+            const listItem2 = document.createElement('li');
+            const instructions = meal.strInstructions && meal.strInstructions.length > 50 
+                ? meal.strInstructions.substring(0, 50) + '...' 
+                : meal.strInstructions || 'Sin instrucciones';
+            listItem2.textContent = `Instrucciones: ${instructions}`;
+            characteristicsList.appendChild(listItem2);
 
-         //guardar receta en localstorage
-        localStorage.setItem("selectedReceta", JSON.stringify(meal));
-
-        //hacer click en la tarjeta
-        const mealCard = document.getElementById("receta-del-dia");
-        mealCard.addEventListener("click", () => {
-            window.location.href = "pages/recetadetalle.html";
-        });
+            const mealCard = document.getElementById("receta-del-dia");
+            
+            const newMealCard = mealCard.cloneNode(true);
+            mealCard.replaceWith(newMealCard);
+            
+            newMealCard.addEventListener("click", () => {
+                window.location.href = `pages/recetadetalle.html?id=${meal.idMeal}`; 
+            });
         } else {
             document.getElementById('receta-del-dia').innerHTML = '<p>No se pudo cargar la receta.</p>';
         }
