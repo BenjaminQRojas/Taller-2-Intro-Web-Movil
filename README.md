@@ -1,4 +1,4 @@
-"# Taller Nº 2 – Introducción a Web Móvil  
+# Taller Nº 2 – Introducción a Web Móvil  
 **InfoMóvil – Universidad Católica del Norte**  
 Docentes: Valentina Henríquez – Cristhian Rabi  
 Entrega: 17 de noviembre de 2025  
@@ -14,24 +14,6 @@ Entrega: 17 de noviembre de 2025
 ## Historia del Proyecto  
 La empresa InfoMóvil ha decidido avanzar hacia una arquitectura más completa, incorporando servicios backend desarrollados por el propio equipo de ingeniería.  
 El objetivo de este segundo taller es que los equipos diseñen y desarrollen un ecosistema compuesto por múltiples APIs y una aplicación web móvil empaquetada como **APK Android mediante Apache Cordova**.
-
-## Estructura final del proyecto
-Taller-2-Intro-Web-Movil/
-├── backend/
-│   ├── cats/        ← FastAPI + TheCatAPI + PostgreSQL
-│   ├── pokemon/     ← Express + PokeAPI + PostgreSQL
-│   ├── meals/       ← Express + TheMealDB + PostgreSQL
-│   └── starwars/    ← NestJS + SWAPI + PostgreSQL
-├── frontend/
-│   ├── index.html
-│   ├── pages/
-│   ├── assets/
-│   └── cordova/
-│       └── www/     ← copia del frontend para Cordova
-├── APK/
-│   └── infomovil.apk
-├── .gitignore
-└── README.md
 
 ## Tecnologías utilizadas  
 - Backend: **FastAPI (Python)**, **NestJS (TypeScript)**, **Express (Node.js)**  
