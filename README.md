@@ -4,12 +4,12 @@ Docentes: Valentina Henríquez – Cristhian Rabi
 Entrega: 17 de noviembre de 2025  
 
 ## Integrantes del equipo  
-| Nombre                  | API responsable               | Tecnología       |
-|-------------------------|-------------------------------|------------------|
-| Tú (@dxrk_sun)          | TheCatAPI                     | FastAPI + Python |
-| [Nombre compañero 1]    | PokeAPI                       | Express + Node.js|
-| [Nombre compañero 2]    | TheMealDB                     | Express + Node.js|
-| Vicente Díaz            | SWAPI                         | NestJS + TypeScript |
+| Nombre                       | RUT             | API responsable         | Tecnología            |
+|------------------------------|-----------------|-------------------------|-----------------------|
+| Nicolás Ignacio Peralta      | 21.004.634-8    | TheCatAPI               | FastAPI + Python      |
+| Mauricio Díaz González       | 21.227.728-2    | PokeAPI                 | Express + Node.js     |
+| Benjamín Quiroz Rojas        | 19.956.115-4    | TheMealDB               | Express + Node.js     |
+| Vicente Díaz Pastene         | 21.487.788-0    | SWAPI                   | NestJS + TypeScript   |
 
 ## Historia del Proyecto  
 La empresa InfoMóvil ha decidido avanzar hacia una arquitectura más completa, incorporando servicios backend desarrollados por el propio equipo de ingeniería.  
