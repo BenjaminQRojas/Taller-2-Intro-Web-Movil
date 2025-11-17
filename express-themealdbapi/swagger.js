@@ -26,7 +26,7 @@ const doc = {
         title: "TheMealDB API Local",
         description: "Documentación para la API de comidas, un proyecto basado en TheMealDB."
     },
-    host: "localhost:4000",
+    host: "localhost:5000",
     basePath: "/",
     schemes: ['http'],
     consumes: ['application/json'],

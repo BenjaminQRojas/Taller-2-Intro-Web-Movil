@@ -7,6 +7,7 @@ out/
 build/
 
 # Environmental variables
+appi-nest/.env
 .env
 .env.local
 .env.development.local
@@ -48,3 +49,5 @@ temp/
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+express-pokeapi/.env
+express-themealdbapi/.env

@@ -1,4 +1,4 @@
-const EXPRESS_API_URL = 'http://localhost:5000/api/meals';
+const EXPRESS_API_URL = '10.0.2.2:5000/api/meals';
 
 export async function getMealList() {
     try {
